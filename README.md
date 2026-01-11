@@ -1,0 +1,1 @@
+# aw-bamberg-app
