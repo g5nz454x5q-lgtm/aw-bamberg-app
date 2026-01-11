@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b5ea8" />
+  <title>Alexander Wilhelm – Bamberg</title>
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="/icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+  <style>
+    :root {
+      --bg1:#061425; --bg2:#061a2c; --bg3:#051324;
+      --line: rgba(255,255,255,.12);
+      --text: #eaf2ff; --muted:#b7c7de;
+      --brand:#0b5ea8; --brand2:#10b981;
+      --r:18px; --r2:26px;
+      --shadow: 0 18px 45px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1000px 600px at 20% 0%, rgba(11,94,168,.35), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(16,185,129,.20), transparent 55%),
+        linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 40%, var(--bg3) 100%);
+    }
+    a{color:inherit}
+    .container{max-width:980px;margin:0 auto;padding:18px 16px 92px}
+    .topbar{
+      position:sticky;top:0;z-index:5;
+      backdrop-filter:saturate(140%) blur(12px);
+      background:rgba(6,20,37,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .topinner{max-width:980px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:10px}
+    .mark{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#0f7ad6);display:grid;place-items:center;font-weight:900;box-shadow:0 12px 30px rgba(11,94,168,.3)}
+    .title strong{display:block;line-height:1.1}
+    .title span{display:block;color:var(--muted);font-size:.88rem}
+    .pills{display:flex;gap:8px;flex-wrap:wrap}
+    .pill{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);padding:7px 10px;border-radius:999px;font-weight:800;font-size:.9rem}
+    .card{border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:var(--r2);box-shadow:var(--shadow);padding:18px}
+    h1{margin:10px 0 8px;font-size:clamp(1.8rem, 4vw, 2.4rem);line-height:1.08}
+    h2{margin:0 0 10px;font-size:1.25rem}
+    p{margin:0;color:var(--muted);line-height:1.6}
+    .grid{display:grid;gap:12px}
+    .grid3{grid-template-columns:repeat(3,1fr)}
+    .grid2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:860px){.grid3,.grid2{grid-template-columns:1fr}}
+    .item{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:var(--r);padding:14px}
+    .item h3{margin:0 0 6px;font-size:1.02rem}
+    .list{margin:10px 0 0;padding-left:18px;color:var(--muted);line-height:1.6}
+    .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{
+      border:1px solid var(--line);background:rgba(255,255,255,.04);
+      color:var(--text);font-weight:900;padding:12px 14px;border-radius:14px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;
+      cursor:pointer;
+    }
+    .btn.primary{border:0;background:linear-gradient(135deg,var(--brand),#0f7ad6);box-shadow:0 14px 35px rgba(11,94,168,.22)}
+    .btn.green{border:0;background:linear-gradient(135deg,var(--brand2),#34d399);color:#052016;box-shadow:0 14px 35px rgba(16,185,129,.22)}
+    .bottomnav{
+      position:fixed;left:0;right:0;bottom:0;z-index:10;
+      background:rgba(6,20,37,.82);backdrop-filter:blur(14px);
+      border-top:1px solid var(--line);
+      padding:10px 10px calc(10px + env(safe-area-inset-bottom));
+    }
+    .navinner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+    .tabbtn{
+      border:1px solid transparent;background:transparent;color:var(--muted);
+      padding:10px 10px;border-radius:16px;font-weight:900;
+      cursor:pointer;
+    }
+    .tabbtn.active{background:rgba(255,255,255,.05);border-color:var(--line);color:var(--text)}
+    .field{display:grid;gap:6px}
+    label{font-weight:900}
+    input,textarea,select{
+      width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--line);
+      background:rgba(6,20,37,.35);color:var(--text);outline:none
+    }
+    textarea{min-height:120px;resize:vertical}
+    .hint{font-size:.9rem;color:rgba(234,242,255,.68)}
+    .notice{border:1px dashed rgba(255,255,255,.18);background:rgba(255,255,255,.03);border-radius:16px;padding:12px;color:rgba(234,242,255,.78)}
+    .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+    @media (max-width:860px){.kpi{grid-template-columns:1fr}}
+    .kpi .item{padding:12px}
+    .small{font-size:.92rem;color:rgba(234,242,255,.70);line-height:1.6}
+    .legal{white-space:pre-line}
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="topinner">
+      <div class="brand">
+        <div class="mark">AW</div>
+        <div class="title">
+          <strong>Alexander Wilhelm</strong>
+          <span>Für den Bamberger Stadtrat · Liste 1 · Platz 17</span>
+        </div>
+      </div>
+      <div class="pills">
+        <span class="pill">Bamberg</span>
+        <span class="pill">CSU-Blau/Grün</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+    <section data-tab="start" class="card">
+      <h1>Gute Lösungen entstehen, wenn man zuhört und gemeinsam Verantwortung trägt.</h1>
+      <p>Diese App bündelt die wichtigsten Infos: Themen, Termine und Kontakt (ohne Tracking und ohne Datenspeicherung).</p>
+
+      <div class="btnrow">
+        <a class="btn primary" href="#themen" onclick="openTab('themen');return false;">Meine Themen</a>
+        <a class="btn" href="#termine" onclick="openTab('termine');return false;">Termine</a>
+        <a class="btn green" href="#mitmachen" onclick="openTab('mitmachen');return false;">Unterstützen</a>
+      </div>
+
+      <div class="kpi">
+        <div class="item"><h3>Stimmzettel</h3><p><b style="color:var(--text)">Liste 1 · Platz 17</b></p></div>
+        <div class="item"><h3>Fokus</h3><p>Sicherheit · Ehrenamt · Jugendarbeit</p></div>
+        <div class="item"><h3>Werte</h3><p>Verlässlichkeit · Zusammenhalt · Verantwortung</p></div>
+      </div>
+    </section>
+
+    <section data-tab="themen" class="card" style="display:none;margin-top:12px">
+      <h2>Themen</h2>
+      <div class="grid grid3">
+        <div class="item">
+          <h3>Sicherheit & Ordnung</h3>
+          <p class="hint">Verlässlichkeit</p>
+          <ul class="list">
+            <li>Stärkung von Ordnung und Sauberkeit im öffentlichen Raum</li>
+            <li>Unterstützung von Feuerwehr, Rettungsdiensten und Ehrenamtlichen</li>
+            <li>Prävention und Präsenz für ein sicheres Gefühl in allen Stadtteilen</li>
+          </ul>
+        </div>
+        <div class="item">
+          <h3>Ehrenamt stärken</h3>
+          <p class="hint">Zusammenhalt</p>
+          <ul class="list">
+            <li>Weniger Bürokratie für Vereine und Initiativen</li>
+            <li>Verlässliche Förderung und echte Anerkennung ehrenamtlicher Arbeit</li>
+            <li>Klare Ansprechpartner in der Stadtverwaltung</li>
+          </ul>
+        </div>
+        <div class="item">
+          <h3>Jugendarbeit fördern</h3>
+          <p class="hint">Zukunft</p>
+          <ul class="list">
+            <li>Stabile Finanzierung für Jugend- und Vereinsarbeit</li>
+            <li>Gute Rahmenbedingungen für Feuerwehr- und Vereinsjugend</li>
+            <li>Wertevermittlung durch Gemeinschaft, Verlässlichkeit und Engagement</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section data-tab="termine" class="card" style="display:none;margin-top:12px">
+      <h2>Termine</h2>
+      <p class="hint">Trage deine echten Termine später in der Datei <b>index.html</b> ein (Bereich „Termine“).</p>
+      <div class="grid grid2" style="margin-top:10px">
+        <div class="item">
+          <h3>Infostand Innenstadt</h3>
+          <p class="small">TT.MM.2026 · 10:00–12:00</p>
+          <p class="small">Grüner Markt / Maxplatz (eintragen)</p>
+        </div>
+        <div class="item">
+          <h3>Bürgergespräch – Stadtteilrunde</h3>
+          <p class="small">TT.MM.2026 · 18:30</p>
+          <p class="small">Treffpunkt im Stadtteil (eintragen)</p>
+        </div>
+      </div>
+    </section>
+
+    <section data-tab="mitmachen" class="card" style="display:none;margin-top:12px">
+      <h2>Mitmachen & Kontakt</h2>
+      <div class="notice">
+        Aktuell ohne Mail/Telefon/Webseite: Die App erstellt eine Nachricht, die du per Knopfdruck <b>kopieren</b> kannst.
+        Danach kannst du sie z. B. in WhatsApp/Instagram/Signal einfügen.
+      </div>
+
+      <div class="grid grid2" style="margin-top:12px">
+        <div class="item">
+          <h3>Nachricht erstellen</h3>
+          <div class="field">
+            <label for="nm">Name</label>
+            <input id="nm" placeholder="Vorname Nachname" />
+          </div>
+          <div class="field" style="margin-top:10px">
+            <label for="st">Stadtteil (optional)</label>
+            <select id="st">
+              <option value="">Bitte wählen</option>
+              <option>Altstadt</option><option>Inselstadt</option><option>Wunderburg</option><option>Bamberg-Nord</option>
+              <option>Gaustadt</option><option>Gereuth</option><option>Berggebiet</option><option>Hain</option><option>Ost</option><option>Sonstiges</option>
+            </select>
+          </div>
+          <div class="field" style="margin-top:10px">
+            <label for="tp">Thema</label>
+            <select id="tp">
+              <option>Unterstützen</option>
+              <option>Ordnung & Sicherheit</option>
+              <option>Ehrenamt & Vereine</option>
+              <option>Jugendarbeit</option>
+              <option>Allgemein</option>
+            </select>
+          </div>
+          <div class="field" style="margin-top:10px">
+            <label for="ms">Nachricht</label>
+            <textarea id="ms" placeholder="Worum geht es? Wie kannst du helfen?"></textarea>
+          </div>
+          <div class="btnrow">
+            <button class="btn green" onclick="copyMessage()">Nachricht kopieren</button>
+            <button class="btn" onclick="openTab('rechtliches')">Impressum/Datenschutz</button>
+          </div>
+          <p class="hint">Wenn du später eine Mail-Adresse willst, kann die App direkt „E-Mail öffnen“ statt Kopieren.</p>
+        </div>
+
+        <div class="item">
+          <h3>Schnell helfen</h3>
+          <ul class="list">
+            <li>Flyer verteilen im eigenen Viertel</li>
+            <li>Infostand unterstützen</li>
+            <li>Online teilen (WhatsApp/Instagram/Facebook)</li>
+            <li>Haustürgespräche (wenn du willst)</li>
+          </ul>
+          <div class="btnrow">
+            <button class="btn primary" onclick="shareApp()">App teilen</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-tab="rechtliches" class="card" style="display:none;margin-top:12px">
+      <h2>Impressum / Datenschutz</h2>
+      <div class="item legal">
+<strong>Verantwortlich im Sinne des Presserechts (ViSdP):</strong>
+Alexander Wilhelm
+Memmelsdorfer Straße 50
+96052 Bamberg
+
+<strong>In Zusammenarbeit mit:</strong> CSU Bamberg
+
+<strong>Datenschutz:</strong>
+Diese App nutzt kein Tracking, kein Analytics und speichert keine personenbezogenen Daten serverseitig.
+Nachrichten werden nur auf deinem Gerät erstellt und können von dir kopiert/versendet werden.
+      </div>
+    </section>
+  </main>
+
+  <div class="bottomnav" role="navigation" aria-label="Navigation">
+    <div class="navinner">
+      <button class="tabbtn active" data-to="start" onclick="openTab('start')">Start</button>
+      <button class="tabbtn" data-to="themen" onclick="openTab('themen')">Themen</button>
+      <button class="tabbtn" data-to="termine" onclick="openTab('termine')">Termine</button>
+      <button class="tabbtn" data-to="mitmachen" onclick="openTab('mitmachen')">Kontakt</button>
+    </div>
+  </div>
+
+  <script>
+    function openTab(name){
+      document.querySelectorAll('[data-tab]').forEach(function(s){
+        s.style.display = (s.getAttribute('data-tab') === name) ? '' : 'none';
+      });
+      document.querySelectorAll('.tabbtn').forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('data-to') === name);
+      });
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function buildMessage(){
+      const name = document.getElementById('nm').value || '(bitte ergänzen)';
+      const st = document.getElementById('st').value || '(keine Angabe)';
+      const tp = document.getElementById('tp').value || 'Allgemein';
+      const ms = document.getElementById('ms').value || '(Nachricht)';
+      return `Hallo Alexander Wilhelm,\n\nName: ${name}\nStadtteil: ${st}\nThema: ${tp}\n\n${ms}\n\nViele Grüße\n${name}`;
+    }
+
+    async function copyMessage(){
+      const text = buildMessage();
+      try{
+        await navigator.clipboard.writeText(text);
+        alert('Nachricht kopiert. Jetzt in WhatsApp/Instagram/Signal einfügen.');
+      }catch(e){
+        alert('Kopieren nicht möglich – bitte Text manuell markieren und kopieren.');
+      }
+    }
+
+    async function shareApp(){
+      const txt = 'Alexander Wilhelm – Für den Bamberger Stadtrat (Liste 1 · Platz 17)';
+      try{
+        if(navigator.share){
+          await navigator.share({ title: 'Alexander Wilhelm – Bamberg', text: txt, url: window.location.href });
+        }else{
+          await navigator.clipboard.writeText(window.location.href);
+          alert('Link kopiert – du kannst ihn jetzt teilen.');
+        }
+      }catch(e){}
+    }
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+    }
+  </script>
+</body>
+</html>
